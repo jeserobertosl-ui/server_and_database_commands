@@ -78,7 +78,7 @@ public class Author
         Gson gson = new Gson();
         JsonElement element = gson.fromJson(_content, JsonElement.class);
 
-        if (element.isJsonNull())
+        if (element.getAsJsonObject().get("profiles") == null)
         {
             System.out.println("Could not find authors");
             return new JsonArray();
@@ -110,6 +110,10 @@ public class Author
 
         JsonArray author_results = Author.authors_as_jsonArray(client.getResults(parameter));
         List<Author> author_list = Author.extract_authors(author_results);
+        if (author_list.isEmpty())
+        {
+            return new Author();
+        }
 
         System.out.println("Select an author:");
         Author.print_authors(author_list);

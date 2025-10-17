@@ -56,6 +56,7 @@ public class Main
                 System.out.println("Select a researcher: ");
 
                 List<Author> author_list = Researchers_CRUD.read();
+                Author.print_authors(author_list);
                 option = scnr.nextInt();
 
                 Researchers_CRUD.delete(author_list.get(option).m_author_id);

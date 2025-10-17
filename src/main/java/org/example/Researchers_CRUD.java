@@ -17,6 +17,11 @@ public class Researchers_CRUD
 
     static void create(Author _author)
     {
+        if (_author.m_author_id.isEmpty())
+        {
+            System.out.println("Could not add author");
+            return;
+        }
         try
         {
             if (_author.m_author_id.equals(Researchers_CRUD.get_one(_author.m_author_id).m_author_id))
